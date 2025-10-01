@@ -120,7 +120,7 @@ export default function CommercialLoansPage() {
         'total_payment', 'allocation_fee', 'kkdf', 'bsmv', 'real_interest_rate', 'annual_cost_rate'];
       
       for (const field of requiredFields) {
-        if (!formData[field]) {
+        if (!formData[field as keyof typeof formData]) {
           throw new Error(`${field} alanı boş bırakılamaz`);
         }
       }
