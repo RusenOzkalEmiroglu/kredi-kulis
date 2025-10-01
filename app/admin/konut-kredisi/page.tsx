@@ -278,7 +278,7 @@ export default function HousingLoansPage() {
     setFormData({
       bank_id: 0,
       amount: 0,
-      term: [],
+      term: '',
       interest_rate: 0,
       monthly_payment: 0,
       total_payment: 0,
