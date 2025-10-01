@@ -114,8 +114,8 @@ export default function YatirimFonlariPage() {
     : [...filteredFonData].sort((a, b) => {
         const aValue = a[sortField]
         const bValue = b[sortField]
-        if (aValue === null) return 1
-        if (bValue === null) return -1
+        if (aValue === null || aValue === undefined) return 1
+        if (bValue === null || bValue === undefined) return -1
         const comparison = aValue < bValue ? -1 : aValue > bValue ? 1 : 0
         return sortDirection === 'asc' ? comparison : -comparison
       });

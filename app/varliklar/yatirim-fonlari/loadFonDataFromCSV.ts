@@ -39,7 +39,7 @@ export async function loadFonDataFromCSV(csvPath: string): Promise<FonData[]> {
             }));
             resolve(data);
           },
-          error: (err) => reject(err),
+          error: (err: Error) => reject(err),
         });
       })
       .catch(reject);

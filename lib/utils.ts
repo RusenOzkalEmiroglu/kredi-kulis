@@ -117,7 +117,13 @@ function generatePaymentSchedule(
  */
 export function compareLoanOffers(offers: LoanOffer[]): LoanComparison[] {
   return offers.map(offer => {
-    const calculation = calculateEqualInstallment(offer);
+    const params: LoanCalculationParams = {
+      principal: offer.loanAmount,
+      interestRate: offer.interestRate,
+      termMonths: offer.termMonths,
+      loanType: 'equal_installment'
+    };
+    const calculation = calculateEqualInstallment(params);
     const score = calculateLoanScore(offer, calculation);
     
     return {

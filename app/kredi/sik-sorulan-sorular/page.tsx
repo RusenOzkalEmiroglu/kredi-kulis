@@ -175,10 +175,11 @@ export default function SikSorulanSorular() {
     }
 
     const searchTermLower = searchQuery.toLowerCase();
-    const filtered = {};
+    const filtered: Record<string, typeof sorular.genel> = {};
     
-    Object.keys(sorular).forEach(category => {
-      filtered[category] = sorular[category].filter(item => 
+    Object.keys(sorular).forEach((category) => {
+      const categoryKey = category as keyof typeof sorular;
+      filtered[category] = sorular[categoryKey].filter(item => 
         item.soru.toLowerCase().includes(searchTermLower) || 
         item.cevap.toLowerCase().includes(searchTermLower)
       );

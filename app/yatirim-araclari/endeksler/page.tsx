@@ -144,12 +144,12 @@ export default function Endeksler() {
         <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
           <h2 className="text-xl font-bold mb-4">{secilenEndeks} Detayları</h2>
           <p className="text-gray-600 mb-6">
-            {endeksDetaylari[secilenEndeks].aciklama}
+            {endeksDetaylari[secilenEndeks as keyof typeof endeksDetaylari].aciklama}
           </p>
 
           <h3 className="font-semibold mb-3">Endeks Özellikleri</h3>
           <ul className="space-y-2">
-            {endeksDetaylari[secilenEndeks].ozellikler.map((ozellik, index) => (
+            {endeksDetaylari[secilenEndeks as keyof typeof endeksDetaylari].ozellikler.map((ozellik, index) => (
               <li key={index} className="flex items-center text-gray-600">
                 <Info className="mr-2 text-primary" size={16} />
                 {ozellik}
