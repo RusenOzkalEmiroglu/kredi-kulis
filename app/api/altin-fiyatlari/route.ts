@@ -20,7 +20,14 @@ export async function GET() {
 
     const html = await response.text();
     const $ = cheerio.load(html);
-    const goldItems = [];
+    const goldItems: Array<{
+      name: string;
+      buyPrice: string;
+      sellPrice: string;
+      change: string;
+      updateTime: string;
+      url: string;
+    }> = [];
 
     // tBody sınıfı içindeki verileri çek
     $('.tBody ul').each((index, element) => {

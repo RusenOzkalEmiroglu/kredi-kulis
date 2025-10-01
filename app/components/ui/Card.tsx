@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 // ===== Card Component Types =====
@@ -89,31 +88,17 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
     };
     
     // Animation variants for motion
-    const cardVariants = {
-      initial: { opacity: 0, y: 20 },
-      animate: { opacity: 1, y: 0 },
-      hover: hover ? { 
-        y: -4, 
-        scale: 1.02,
-        transition: { type: 'spring', stiffness: 300, damping: 30 }
-      } : {},
-      tap: interactive ? { scale: 0.98 } : {}
-    };
-    
     return (
-      <motion.div
+      <div
         ref={ref}
         className={cn(
           baseClasses,
           variantClasses[variant],
           paddingClasses[padding],
+          hover && 'hover:scale-[1.02] hover:-translate-y-1 transition-all duration-200',
+          interactive && 'active:scale-[0.98]',
           className
         )}
-        variants={cardVariants}
-        initial="initial"
-        animate="animate"
-        whileHover="hover"
-        whileTap="tap"
         onClick={onClick}
         {...props}
       >
@@ -123,7 +108,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
         )}
         
         {children}
-      </motion.div>
+      </div>
     );
   }
 );

@@ -26,16 +26,32 @@ interface CommercialLoan {
   created_at?: string;
 }
 
+interface CommercialLoanFormData {
+  id?: number;
+  bank_id?: number;
+  amount?: number;
+  term?: string; // Form'da string olarak tutulur
+  interest_rate?: number;
+  monthly_payment?: number;
+  total_payment?: number;
+  allocation_fee?: number;
+  kkdf?: number;
+  bsmv?: number;
+  real_interest_rate?: number;
+  annual_cost_rate?: number;
+  description?: string;
+}
+
 export default function CommercialLoansPage() {
   const [loans, setLoans] = useState<CommercialLoan[]>([]);
   const [banks, setBanks] = useState<Bank[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingLoan, setEditingLoan] = useState<CommercialLoan | null>(null);
-  const [formData, setFormData] = useState<Partial<CommercialLoan>>({
+  const [formData, setFormData] = useState<CommercialLoanFormData>({
     bank_id: 0,
     amount: 0,
-    term: [],
+    term: '',
     interest_rate: 0,
     monthly_payment: 0,
     total_payment: 0,
@@ -97,20 +113,12 @@ export default function CommercialLoansPage() {
     return `%${value.toFixed(2)}`;
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    
-    if (name === 'term') {
-      setFormData(prev => ({
-        ...prev,
-        term: value.split(',').map(v => v.trim()).filter(Boolean)
-      }));
-    } else {
-      setFormData(prev => ({
-        ...prev,
-        [name]: value
-      }));
-    }
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -234,7 +242,7 @@ export default function CommercialLoansPage() {
     setFormData({
       bank_id: 0,
       amount: 0,
-      term: [],
+      term: '',
       interest_rate: 0,
       monthly_payment: 0,
       total_payment: 0,

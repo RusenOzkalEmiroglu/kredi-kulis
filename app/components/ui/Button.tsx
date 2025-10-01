@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
 import { Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -104,14 +103,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     
     // Loading spinner component
     const LoadingSpinner = () => (
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className="flex items-center"
-      >
+      <div className="flex items-center">
         <Loader2 className="w-4 h-4 animate-spin" />
-      </motion.div>
+      </div>
     );
     
     // Render icon with proper positioning
@@ -130,7 +124,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     };
     
     return (
-      <motion.button
+      <button
         ref={ref}
         className={cn(
           baseClasses,
@@ -139,9 +133,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           className
         )}
         disabled={disabled || loading}
-        whileHover={!disabled && !loading ? { scale: 1.02 } : {}}
-        whileTap={!disabled && !loading ? { scale: 0.98 } : {}}
-        transition={{ type: 'spring', stiffness: 400, damping: 25 }}
         {...props}
       >
         {/* Shimmer effect overlay */}
@@ -158,7 +149,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         </span>
         
         {iconPosition === 'right' && renderIcon()}
-      </motion.button>
+      </button>
     );
   }
 );

@@ -35,6 +35,8 @@ interface GoldPrice {
   name: string;
   buyPrice: string;
   sellPrice: string;
+  change?: string;
+  updateTime?: string;
 }
 
 // ===== Constants =====
@@ -162,6 +164,7 @@ export default function AnasayfaHesaplamaTabs() {
       sellPrice: '4.160,92'
     },
     {
+      type: '22 Ayar Bilezik',
       name: '22 Ayar Bilezik',
       buyPrice: '3.819,05',
       sellPrice: '3.854,06',
@@ -169,6 +172,7 @@ export default function AnasayfaHesaplamaTabs() {
       updateTime: '11:32'
     },
     {
+      type: 'Altın (ONS)',
       name: 'Altın (ONS)',
       buyPrice: '3.392,67',
       sellPrice: '3.393,06',
@@ -176,6 +180,7 @@ export default function AnasayfaHesaplamaTabs() {
       updateTime: '11:47'
     },
     {
+      type: 'Cumhuriyet Altını',
       name: 'Cumhuriyet Altını',
       buyPrice: '27.308,00',
       sellPrice: '27.500,00',
@@ -183,6 +188,7 @@ export default function AnasayfaHesaplamaTabs() {
       updateTime: '11:32'
     },
     {
+      type: 'Yarım Altın',
       name: 'Yarım Altın',
       buyPrice: '13.696,00',
       sellPrice: '13.802,00',
@@ -190,6 +196,7 @@ export default function AnasayfaHesaplamaTabs() {
       updateTime: '11:32'
     },
     {
+      type: 'Çeyrek Altın',
       name: 'Çeyrek Altın',
       buyPrice: '6.850,00',
       sellPrice: '6.902,00',

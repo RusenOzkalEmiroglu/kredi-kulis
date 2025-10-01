@@ -16,12 +16,12 @@ export async function GET() {
       ? result.Tarih_Date.Currency 
       : [result.Tarih_Date.Currency];
 
-    const rates = currencies.map(currency => ({
+    const rates = currencies.map((currency: any) => ({
       code: currency['@_CurrencyCode'],
       name: currency.CurrencyName,
       rate: (parseFloat(currency.ForexBuying) + parseFloat(currency.ForexSelling)) / 2,
       change: 0 // TCMB anlık değişim vermiyor
-    })).filter(rate => rate.rate > 0);
+    })).filter((rate: any) => rate.rate > 0);
 
     if (rates.length === 0) {
       throw new Error('No valid rates found');
