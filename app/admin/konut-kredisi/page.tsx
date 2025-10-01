@@ -189,17 +189,17 @@ export default function HousingLoansPage() {
       }
 
       const numericFormData = {
-        bank_id: parseInt(formData.bank_id as string),
-        amount: parseFloat(formData.amount as string),
+        bank_id: typeof formData.bank_id === 'string' ? parseInt(formData.bank_id) : Number(formData.bank_id),
+        amount: typeof formData.amount === 'string' ? parseFloat(formData.amount) : Number(formData.amount),
         term: termArray,
-        interest_rate: parseFloat(formData.interest_rate as string),
-        monthly_payment: parseFloat(formData.monthly_payment as string),
-        total_payment: parseFloat(formData.total_payment as string),
-        allocation_fee: parseFloat(formData.allocation_fee as string),
-        kkdf: parseFloat(formData.kkdf as string),
-        bsmv: parseFloat(formData.bsmv as string),
-        real_interest_rate: parseFloat(formData.real_interest_rate as string),
-        annual_cost_rate: parseFloat(formData.annual_cost_rate as string),
+        interest_rate: typeof formData.interest_rate === 'string' ? parseFloat(formData.interest_rate) : Number(formData.interest_rate),
+        monthly_payment: typeof formData.monthly_payment === 'string' ? parseFloat(formData.monthly_payment) : Number(formData.monthly_payment),
+        total_payment: typeof formData.total_payment === 'string' ? parseFloat(formData.total_payment) : Number(formData.total_payment),
+        allocation_fee: typeof formData.allocation_fee === 'string' ? parseFloat(formData.allocation_fee) : Number(formData.allocation_fee),
+        kkdf: typeof formData.kkdf === 'string' ? parseFloat(formData.kkdf) : Number(formData.kkdf),
+        bsmv: typeof formData.bsmv === 'string' ? parseFloat(formData.bsmv) : Number(formData.bsmv),
+        real_interest_rate: typeof formData.real_interest_rate === 'string' ? parseFloat(formData.real_interest_rate) : Number(formData.real_interest_rate),
+        annual_cost_rate: typeof formData.annual_cost_rate === 'string' ? parseFloat(formData.annual_cost_rate) : Number(formData.annual_cost_rate),
         description: formData.description
       };
 
