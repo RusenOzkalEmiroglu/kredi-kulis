@@ -168,7 +168,7 @@ export default function CommercialLoansPage() {
       };
 
       for (const [key, value] of Object.entries(numericFormData)) {
-        if (key !== 'term' && key !== 'description' && (isNaN(value) || value === null)) {
+        if (key !== 'term' && key !== 'description' && (typeof value === 'number' && (isNaN(value) || value === null))) {
           throw new Error(`${key} için geçerli bir sayısal değer giriniz`);
         }
       }
